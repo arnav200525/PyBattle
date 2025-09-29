@@ -1,0 +1,27 @@
+[
+  {
+    "level": 1,
+    "buggy_code": "def greet(name):\n    if name:\n        print(\"Hello\" + name)\n    else:\n        print(\"Hello Guest\")\ngreet()",
+    "expected_output": "TypeError"
+  },
+  {
+    "level": 2,
+    "buggy_code": "def find_max(lst):\n    max = lst[0]\n    for i in lst:\n        if i > max:\n            max = i\n    return max\n\nnums = [4, 7, 1, 9]\nprint(find_max)",
+    "expected_output": "Function not called"
+  },
+  {
+    "level": 3,
+    "buggy_code": "for i in range(5)\n    for j in range(2):\n        print(i, j)",
+    "expected_output": "SyntaxError"
+  },
+  {
+    "level": 4,
+    "buggy_code": "def divide(a, b):\n    return a / b\n\nprint(divide(10, 0))",
+    "expected_output": "ZeroDivisionError"
+  },
+  {
+    "level": 5,
+    "buggy_code": "def process_scores(scores):\n    total = 0\n    for i in range(len(scores) + 1):\n        total += scores[i]\n    average = total / len(scores)\n    print(\"Average score:\", average)\n\nstudent_scores = [88, 76, 92, 85]\nprocess_scores(student_scores)",
+    "expected_output": "IndexError"
+  }
+]

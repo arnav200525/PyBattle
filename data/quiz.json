@@ -1,0 +1,234 @@
+{
+  "levels": [
+    {
+      "level": 1,
+      "title": "Level 1",
+      "questions": [
+        {
+          "question": "Who created Python?",
+          "options": ["Dennis Ritchie", "Guido van Rossum", "James Gosling", "Bjarne Stroustrup"],
+          "answer": 2
+        },
+        {
+          "question": "In which year was Python first released?",
+          "options": ["1989", "1991", "1995", "2000"],
+          "answer": 2
+        },
+        {
+          "question": "Python is an ______ language.",
+          "options": ["Compiled", "Interpreted", "Assembly", "Machine"],
+          "answer": 2
+        },
+        {
+          "question": "What is the extension of Python files?",
+          "options": [".java", ".c", ".py", ".txt"],
+          "answer": 3
+        },
+        {
+          "question": "Python was developed in which country?",
+          "options": ["Netherlands", "USA", "UK", "India"],
+          "answer": 1
+        },
+        {
+          "question": "Which organization maintains Python now?",
+          "options": ["Apache Foundation", "Python Software Foundation", "Google", "Microsoft"],
+          "answer": 2
+        },
+        {
+          "question": "Which keyword is used to define a function in Python?",
+          "options": ["func", "function", "define", "def"],
+          "answer": 4
+        },
+        {
+          "question": "Which symbol is used for comments in Python?",
+          "options": ["//", "/* */", "#", "<!-- -->"],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "Level 2",
+      "questions": [
+        {
+          "question": "Which data type is mutable?",
+          "options": ["tuple", "list", "string", "int"],
+          "answer": 2
+        },
+        {
+          "question": "What is the output of 10 // 3?",
+          "options": ["3", "3.0", "3.33", "Error"],
+          "answer": 1
+        },
+        {
+          "question": "Which operator is used for exponentiation?",
+          "options": ["^", "**", "exp()", "%"],
+          "answer": 2
+        },
+        {
+          "question": "What is the default data type of 3.14 in Python?",
+          "options": ["int", "float", "double", "decimal"],
+          "answer": 2
+        },
+        {
+          "question": "Which of these is an immutable data type?",
+          "options": ["list", "dict", "set", "tuple"],
+          "answer": 4
+        },
+        {
+          "question": "Which operator is used for floor division?",
+          "options": ["/", "//", "%", "÷"],
+          "answer": 2
+        },
+        {
+          "question": "Which keyword is used to check data type?",
+          "options": ["datatype()", "type()", "typeof()", "isType()"],
+          "answer": 2
+        },
+        {
+          "question": "What will be the output of: type([])?",
+          "options": ["list", "tuple", "dict", "set"],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "title": "Level 3",
+      "questions": [
+        {
+          "question": "Which keyword is used for conditional branching?",
+          "options": ["if", "else", "elif", "All of these"],
+          "answer": 4
+        },
+        {
+          "question": "What is the output of: len(range(0,10,2))?",
+          "options": ["10", "5", "9", "4"],
+          "answer": 2
+        },
+        {
+          "question": "Which loop is not available in Python?",
+          "options": ["for", "while", "do-while", "All exist"],
+          "answer": 3
+        },
+        {
+          "question": "Which keyword is used to exit a loop?",
+          "options": ["stop", "exit", "break", "quit"],
+          "answer": 3
+        },
+        {
+          "question": "Which keyword is used to skip current iteration?",
+          "options": ["skip", "continue", "pass", "jump"],
+          "answer": 2
+        },
+        {
+          "question": "Functions in Python are defined using?",
+          "options": ["func", "def", "function", "define"],
+          "answer": 2
+        },
+        {
+          "question": "Which keyword is used when function has no code?",
+          "options": ["skip", "pass", "continue", "none"],
+          "answer": 2
+        },
+        {
+          "question": "Recursive functions are supported in Python?",
+          "options": ["Yes", "No"],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "title": "Level 4",
+      "questions": [
+        {
+          "question": "Which concept is not part of OOP in Python?",
+          "options": ["Encapsulation", "Polymorphism", "Compilation", "Inheritance"],
+          "answer": 3
+        },
+        {
+          "question": "Which function is called when object is created?",
+          "options": ["__init__", "__start__", "__create__", "constructor()"],
+          "answer": 1
+        },
+        {
+          "question": "Which keyword is used to handle exceptions?",
+          "options": ["try-except", "error-catching", "throw", "catch"],
+          "answer": 1
+        },
+        {
+          "question": "Which keyword is used to import a module?",
+          "options": ["use", "include", "import", "require"],
+          "answer": 3
+        },
+        {
+          "question": "Which keyword is used to define a class?",
+          "options": ["object", "class", "defclass", "new"],
+          "answer": 2
+        },
+        {
+          "question": "What is the parent class of all Python classes?",
+          "options": ["Base", "Object", "Super", "None"],
+          "answer": 2
+        },
+        {
+          "question": "Which exception is raised when dividing by zero?",
+          "options": ["ZeroException", "ZeroDivisionError", "MathError", "DivError"],
+          "answer": 2
+        },
+        {
+          "question": "Which method returns length of an object?",
+          "options": ["length()", "len()", "size()", "count()"],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "title": "Level 5",
+      "questions": [
+        {
+          "question": "Which framework is most popular for web development in Python?",
+          "options": ["Spring", "Django", "Laravel", "React"],
+          "answer": 2
+        },
+        {
+          "question": "Flask is a _____ web framework.",
+          "options": ["Full-stack", "Micro", "Hybrid", "Enterprise"],
+          "answer": 2
+        },
+        {
+          "question": "Which library is used for numerical computing?",
+          "options": ["NumPy", "Pandas", "Matplotlib", "Seaborn"],
+          "answer": 1
+        },
+        {
+          "question": "Pandas is primarily used for?",
+          "options": ["Web development", "Game development", "Data analysis", "Machine learning"],
+          "answer": 3
+        },
+        {
+          "question": "Which library is best for data visualization?",
+          "options": ["Django", "NumPy", "Matplotlib", "Flask"],
+          "answer": 3
+        },
+        {
+          "question": "Which is not a Python web framework?",
+          "options": ["Django", "Flask", "FastAPI", "React"],
+          "answer": 4
+        },
+        {
+          "question": "Which library is used for machine learning?",
+          "options": ["TensorFlow", "Django", "Pandas", "Flask"],
+          "answer": 1
+        },
+        {
+          "question": "Which command installs external Python libraries?",
+          "options": ["install", "pip install", "python install", "setup"],
+          "answer": 2
+        }
+      ]
+    }
+  ]
+}
