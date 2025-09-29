@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Leaderboard | PyBattle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles & Variables */
+        :root {
+            --bg-light: #ffffff;
+            --bg-card: #ffffff;
+            --text-dark: #333333;
+            --text-secondary: #666666;
+            --accent-orange: #ff7e00;
+            --accent-orange-dark: #cc6400;
+            --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --glow-shadow: 0 0 15px rgba(255, 126, 0, 0.4);
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Leaderboard Page Specific Styling */
+        .leaderboard-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border: 1px solid #e0e0e0;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .leaderboard-header {
+            margin-bottom: 2rem;
+        }
+
+        .leaderboard-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            color: var(--accent-orange);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .leaderboard-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .player-name, .player-rank {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .leaderboard-thead {
+            background-color: var(--accent-orange);
+            color: var(--bg-card);
+        }
+
+        th, td {
+            padding: 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .leaderboard-row:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .leaderboard-row:hover {
+            background-color: #ffe8d2;
+        }
+
+        .current-user {
+        
+            color: var(--text-secondary);
+            font-weight: bold;
+        }
+        
+        .current-user td {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 2rem;
+            background-color: var(--accent-orange);
+            color: var(--bg-card);
+            text-decoration: none;
+            border-radius: 9999px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(255, 126, 0, 0.3);
+        }
+
+        .btn-back:hover {
+            background-color: var(--accent-orange-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .leaderboard-container {
+                padding: 1.5rem;
+            }
+            .leaderboard-title {
+                font-size: 2rem;
+            }
+            .leaderboard-subtitle {
+                font-size: 1rem;
+            }
+            th, td {
+                padding: 1rem 0.75rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body class="leaderboard-body">
+    <div class="leaderboard-container">
+        <header class="leaderboard-header">
+            <h1 class="leaderboard-title">🏆 PyBattle Leaderboard</h1>
+            <p class="leaderboard-subtitle">
+                Heyy, <span class="player-name">{{ name }}</span> —
+                Your current Rank: <span class="player-rank">{{ current_rank or "—" }}</span>
+            </p>
+        </header>
+
+        <main class="leaderboard-main">
+            <table class="leaderboard-table" aria-label="Leaderboard table">
+                <thead class="leaderboard-thead">
+                    <tr>
+                        <th class="col-rank">Rank</th>
+                        <th class="col-name">Player</th>
+                        <th class="col-coins">Total Coins</th>
+                    </tr>
+                </thead>
+                <tbody class="leaderboard-tbody">
+                    {% for row in leaderboard_data %}
+                    <tr class="leaderboard-row {% if row['name'] == name %}current-user{% endif %}">
+                        <td class="rank-cell">{{ loop.index }}</td>
+                        <td class="name-cell">{{ row['name'] }}</td>
+                        <td class="coins-cell">{{ row['total_coins'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+
+        <footer class="leaderboard-footer">
+            <a class="btn-back" href="/home">Back to Home</a>
+        </footer>
+    </div>
+</body>
+</html>

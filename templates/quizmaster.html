@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Master | PyBattle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href=" {{ url_for('static', filename='icon-for-tab.png') }} ">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles & Variables */
+        :root {
+            --bg-light: #ffffff;
+            --bg-card: #ffffff;
+            --text-dark: #333333;
+            --text-secondary: #666666;
+            --accent-orange: #ff7e00;
+            --accent-orange-dark: #cc6400;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Game Layout */
+        .game-header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .game-content {
+            width: 100%;
+            max-width: 900px;
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border: 1px solid #e0e0e0;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .game-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            color: var(--accent-orange);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .player-info {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .player-info .coin-icon {
+            font-size: 1.2em;
+        }
+
+        /* Quiz Specific Styling */
+        .quiz-container {
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-container h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: #f7f7f7;
+            padding: 1rem 1.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .quiz-option:hover {
+            background-color: #ffe8d2;
+        }
+
+        .quiz-option input[type="radio"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid var(--accent-orange);
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .quiz-option input[type="radio"]:checked {
+            background-color: var(--accent-orange);
+            border-color: var(--accent-orange);
+        }
+
+        .btn-submit {
+            padding: 0.75rem 2rem;
+            background-color: var(--accent-orange);
+            color: var(--bg-card);
+            border: none;
+            width: 100%;
+            border-radius: 9999px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 126, 0, 0.3);
+            margin-top: 2rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #cc6400;
+        }
+
+        .feedback-message {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 0.5rem;
+            text-align: left;
+        }
+         .btn-nav {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      color: var(--accent-orange);
+      text-decoration: none;
+      border: 2px solid var(--accent-orange);
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+
+    .btn-nav:hover {
+      background-color: var(--accent-orange);
+      color: var(--bg-card);
+    }
+    .navigation {
+      margin-top: 2rem;
+    }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .game-title {
+                font-size: 2rem;
+            }
+            .game-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-header">
+        <h1 class="game-title">🎯 Quiz Master</h1>
+        <p class="player-info"><b>{{ name }}</b> | <span class="coin-icon">🪙</span> {{ coins }}</p>
+    </div>
+    <div class="game-content">
+        <div class="quiz-container">
+            <h2 style="text-align: center; font-size: 30px; margin-top: 10px;">{{ level_data.title }}</h2>
+            <form method="post">
+                <p class="quiz-question">Q{{ q_index+1 }}: {{ level_data.questions[q_index].question }}</p>
+                <div class="quiz-options">
+                    {% for option in level_data.questions[q_index].options %}
+                    <label class="quiz-option">
+                        <input type="radio" name="answer" value="{{ loop.index }}">
+                        {{ option }}
+                    </label>
+                    {% endfor %}
+                </div>
+                <input type="hidden" name="q_index" value="{{ q_index }}">
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
+         <div class="navigation">
+      <a href="/home" class="btn-nav">Back to Home</a>
+    </div>
+        {% if feedback %}
+        <div class="feedback-message">
+            {% for f in feedback %}
+            <p>{{ f }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if message %}
+        <div class="feedback-message">
+            <p><b>{{ message }}</b></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

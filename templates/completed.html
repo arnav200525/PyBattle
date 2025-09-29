@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Completed | PyBattle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href=" {{ url_for('static', filename='icon-for-tab.png') }} ">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles & Variables */
+        :root {
+            --bg-light: #ffffff;
+            --bg-card: #ffffff;
+            --text-dark: #333333;
+            --text-secondary: #666666;
+            --accent-orange: #ff7e00;
+            --accent-orange-dark: #cc6400;
+            --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --glow-shadow: 0 0 15px rgba(255, 126, 0, 0.4);
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Completed Page Specific Styling */
+        .completed-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 2rem;
+            background-color: var(--bg-card);
+            border: 1px solid #e0e0e0;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        
+        .completed-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            color: var(--accent-orange);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .completed-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .completed-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .completed-text strong {
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+        }
+
+        .completed-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px; /* Pill shape */
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 10px rgba(255, 126, 0, 0.3);
+        }
+
+        .btn-dashboard {
+            background-color: var(--accent-orange);
+            color: var(--bg-card);
+        }
+        
+        .btn-restart {
+            background-color: transparent;
+            color: var(--accent-orange);
+            border: 2px solid var(--accent-orange);
+        }
+        
+        .btn-dashboard:hover {
+            background-color: #cc6400;
+        }
+
+        .btn-restart:hover {
+            background-color:#ff7e00;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .completed-container {
+                padding: 1.5rem;
+            }
+            .completed-title {
+                font-size: 2.2rem;
+            }
+            .completed-subtitle {
+                font-size: 1.2rem;
+            }
+            .completed-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body class="completed-body">
+    <div class="completed-container">
+        <h1 class="completed-title">🎉 Congratulations, {{ name }}!</h1>
+        <h2 class="completed-subtitle">You’ve Completed All Levels</h2>
+        <p class="completed-text">🏆 Total Coins Earned: <strong>{{ coins }}</strong></p>
+        
+        <div class="completed-buttons">
+            <a href="/dashboard" class="btn btn-dashboard">Go to Dashboard</a>
+            <a href="/home" class="btn btn-restart">Play Again</a>
+        </div>
+    </div>
+</body>
+</html>

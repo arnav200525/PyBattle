@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | PyBattle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href=" {{ url_for('static', filename='icon-for-tab.png') }} ">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles & Variables */
+    :root {
+      --bg-light: #f7f7f7;
+      --bg-card: #ffffff;
+      --text-dark: #333333;
+      --text-secondary: #666666;
+      --accent-orange: #ff7e00;
+      --accent-orange-dark: #cc6400;
+      --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --glow-shadow: 0 0 15px rgba(255, 126, 0, 0.4);
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Layout & Structure */
+    .dashboard-header {
+      background-color: var(--bg-card);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-subtle);
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .dashboard-main {
+      flex-grow: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .dashboard-footer {
+      background-color: var(--bg-card);
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-secondary);
+      border-top: 1px solid #e0e0e0;
+    }
+
+    /* Typography */
+    .dashboard-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      margin: 0;
+      color: var(--accent-orange);
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px rgba(255, 126, 0, 0.3);
+    }
+    
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      color: var(--text-dark);
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+
+    /* Navigation & Buttons */
+    .dashboard-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .welcome-text {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .btn-play,
+    .btn-logout {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px; /* Pill shape */
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-play {
+      background-color: var(--accent-orange);
+      color: var(--bg-card);
+      border: 2px solid transparent;
+    }
+
+    .btn-play:hover {
+      background-color: #cc6400;
+    
+    }
+    .dash {
+      width: 100%;
+      margin-top: 20px;
+      padding: 0.6rem;
+    }
+
+    .lead{
+      width: 50%;
+      padding: 8px;
+    }
+    
+    .btn-logout {
+      background-color: transparent;
+      color: var(--accent-orange);
+      border: 2px solid var(--accent-orange);
+    }
+
+    .btn-logout:hover {
+      background-color: var(--accent-orange-dark);
+      color: var(--bg-card);
+      transform: translateY(-2px);
+    }
+    
+    /* Battle Modes */
+    .modes-container {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    }
+
+    .mode-box {
+      background-color: var(--bg-card);
+      border: 1px solid #e0e0e0;
+      border-radius: 1rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex: 1 1 200px; /* Flex-grow, flex-shrink, flex-basis for responsive sizing */
+    }
+
+    .mode-box:hover {
+      box-shadow: var(--glow-shadow);
+    }
+
+    .mode-box h3 {  
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      color: var(--accent-orange);
+      margin-top: 0;
+    }
+
+    .mode-box p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .dashboard-header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .dashboard-nav {
+        gap: 1rem;
+      }
+      .dashboard-title {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .modes-container {
+        flex-direction: column;
+      }
+      .dashboard-main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="dashboard-header">
+    <h1 class="dashboard-title">⚔️ PyBattle ⚔️</h1>
+    <nav class="dashboard-nav">
+      <span class="welcome-text">Welcome, <b>{{ name }}!</b></span>
+      <a href="/logout" class="btn-logout">Logout</a>
+    </nav>
+  </header>
+
+  <main class="dashboard-main">
+    <h2 class="section-title">Choose Your Battle Mode</h2>
+
+    <div class="modes-container">
+      <div class="mode-box">
+        <h3>🛠️ Spot the Error</h3>
+        <p>Find and fix bugs hidden in the code.</p>
+        <a href="/spoterror" class="btn-play">Play</a>
+      </div>
+
+      <div class="mode-box">
+        <h3>⏱️ Write Code Under Time</h3>
+        <p>Solve challenges before the timer runs out.</p>
+        <a href="/writecode" class="btn-play">Play</a>
+      </div>
+
+      <div class="mode-box">
+        <h3>💻 Output Challenge</h3>
+        <p>Guess the correct output of tricky snippets.</p>
+        <a href="/outputchallenge" class="btn-play">Play</a>
+      </div>
+
+      <div class="mode-box">
+        <h3>❓ Quiz Master</h3>
+        <p>Test your knowledge with coding quizzes.</p>
+        <a href="/quizmaster" class="btn-play">Play</a>
+      </div>
+<a href="/dashboard" class="btn-play dash">Dashboard</a>
+ <a href="/leaderboard" class="btn-logout lead">Learderboard</a>
+    </div>
+  </main>
+
+  <footer class="dashboard-footer">
+    © 2025 PyBattle | Arnav Deore
+  </footer>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | PyBattle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href=" {{ url_for('static', filename='icon-for-tab.png') }} ">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles & Variables */
+    :root {
+      --bg-light: #f7f7f7;
+      --bg-card: #ffffff;
+      --text-dark: #333333;
+      --text-secondary: #666666;
+      --accent-orange: #ff7e00;
+      --accent-orange-dark: #cc6400;
+      --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --glow-shadow: 0 0 15px rgba(255, 126, 0, 0.4);
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Auth Container */
+    .auth-container {
+      width: 100%;
+      max-width: 400px;
+      padding: 2rem;
+    }
+
+    .auth-box {
+      background-color: var(--bg-card);
+      border: 1px solid #e0e0e0;
+      border-radius: 1rem;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-subtle);
+      text-align: center;
+    }
+
+    .auth-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      color: var(--accent-orange);
+      margin-top: 0;
+      margin-bottom: 2rem;
+    }
+
+    /* Form Styles */
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-group {
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: -7px;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      box-sizing: border-box; /* Ensures padding doesn't affect width */
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent-orange);
+      box-shadow: 0 0 5px rgba(255, 126, 0, 0.5);
+    }
+
+    .btn-submit {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent-orange);
+      color: var(--bg-card);
+      border: none;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 126, 0, 0.3);
+    }
+
+    .btn-submit:hover {
+      background-color: #cc6400;
+    }
+
+    .auth-text {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .auth-link {
+      color: var(--accent-orange);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .auth-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h2 class="auth-title">Login Now</h2>
+      <form action="/login" method="POST" class="auth-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" class="form-input" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-input" required>
+        </div>
+
+        <button type="submit" class="btn-submit">Login</button>
+      </form>
+
+      {% if message %}
+      <script>
+        alert("{{message}}")
+      </script>
+      {% endif %}
+      <p class="auth-text">
+        Don’t have an account? 
+        <a href="/register" class="auth-link">Register here</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
